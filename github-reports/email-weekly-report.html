@@ -1,0 +1,34 @@
+function emailWeeklyReport() {
+    //Get Current week Data
+    var dashboard = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("last-week");
+    //get dashboard data
+    //const hdr = dashboard.getDataRange();
+    
+
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Scripts-DonotDelete");
+    var date = sheet.getRange("A3").getValue();
+    //var fdate= Utilities.formatDate(date, "GMT+5", "yyyy/MM/dd");
+    
+    const descr = " Pull Requests ";
+    const value = " Url ";
+
+    var dataGrid = dashboard.getDataRange().getValues(); //loads the data in this range at the time
+    var message = ""; //container to hold final email content
+   
+    const htmltemplate = HtmlService.createTemplateFromFile("email");
+    htmltemplate.hdr = ' Merged Pull Report for the week of : ' + date;
+    htmltemplate.descr = descr;
+    htmltemplate.value = value;
+    htmltemplate.dataGrid = dataGrid;
+    
+    const htmlemail = htmltemplate.evaluate().getContent();
+
+     // Send Dashboard Email.
+     var emailRange = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Email").getRange("B2");
+     var emailAddress = emailRange.getValue();
+     var subject = ' GitHub Weekly Report : Merged Pulls ';
+    //console.log(htmlemail);
+    MailApp.sendEmail(emailAddress, subject,"", {htmlBody:htmlemail});
+
+       
+ };
