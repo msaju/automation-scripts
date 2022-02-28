@@ -1,0 +1,8 @@
+Line-Cov: =QUERY(IMPORTDATA("https://build.gluster.org/job/line-coverage/lastBuild/console"), "select Col1 where Col1 contains 'Finished:'")
+32-bit-build: =QUERY(IMPORTDATA("https://build.gluster.org/view/Github%20jobs/job/gh_32-bit-build-smoke/lastBuild/consoleText"), "select Col1 where Col1 contains 'Finished'")
+centos7-regression: =QUERY(IMPORTDATA("https://build.gluster.org/view/Github%20jobs/job/gh_centos7-regression/lastBuild/console"), "select Col1 where Col1 contains 'Finished:'")
+clang scan: =QUERY(IMPORTDATA("https://build.gluster.org/view/Github%20jobs/job/gh_clang-format/lastBuild/consoleText"), "select Col1 where Col1 contains 'Finished:'")
+devrpm-el7: =QUERY(IMPORTDATA("https://build.gluster.org/view/Github%20jobs/job/gh_devrpm-el7/lastBuild/consoleText"), "select Col1 where Col1 contains 'Finished:'")
+devrpm-fedora: =QUERY(IMPORTDATA("https://build.gluster.org/view/Github%20jobs/job/gh_devrpm-fedora/lastBuild/consoleText"), "select Col1 where Col1 contains 'Finished:'")
+fedora-smoke: =QUERY(IMPORTDATA("https://build.gluster.org/view/Github%20jobs/job/gh_fedora-smoke/lastBuild/consoleText"), "select Col1 where Col1 contains 'Finished:'")
+free-bsd-smoke: =QUERY(IMPORTDATA("https://build.gluster.org/view/Github%20jobs/job/gh_freebsd-smoke/lastBuild/consoleText"), "select Col1 where Col1 contains 'Finished:'")
